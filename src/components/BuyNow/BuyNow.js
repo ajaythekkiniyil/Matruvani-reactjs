@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import  secureLocalStorage  from  "react-secure-storage";
 
 function BuyNow() {
-    // fetch latest book details from backend and store to book data
     const [bookData, setBookData] = useState({
         bookTitle: 'March 2022',
         bookVolume: 'Vol. 31 No.8',
         bookPrice: '50.00',
         bookLanguage: 'English',
     })
+    useEffect(()=>{
+        // fetch latest book details from backend and store to book data
+
+        // book data securly store to localStorage
+        secureLocalStorage.setItem('bookData',bookData)
+    },[bookData])
 
     // function handlechage to change language
     function handleChange(e) {
@@ -55,6 +61,7 @@ function BuyNow() {
                 </div>
             </div>
         </section>
+            
     )
 }
 export default BuyNow

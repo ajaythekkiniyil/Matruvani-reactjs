@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import secureLocalStorage from "react-secure-storage";
 
 function Cart() {
-    useEffect(() => {
-        console.log('hi');
-    }, [])
-
     const bookData = secureLocalStorage.getItem('bookData')
     const [bookDetails, setbookDetails] = useState(bookData)
     const [address, setAddress] = useState({})
@@ -36,7 +32,8 @@ function Cart() {
             bookDetails,
             address
         }
-        console.log(purchaseData);
+        secureLocalStorage.setItem('purchaseData', purchaseData)
+        window.location.href = '/order-summary'
     }
 
     return (
@@ -67,10 +64,10 @@ function Cart() {
                             <form className='order-details' onSubmit={handleSubmit}>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <input type="text" className="form-control" placeholder="First name" name="firstName" onChange={handleAddress} />
+                                        <input type="text" className="form-control" placeholder="First name" name="firstname" onChange={handleAddress} />
                                     </div>
                                     <div className="col-md-6">
-                                        <input type="text" className="form-control" placeholder="Last name" name="lastName" onChange={handleAddress} />
+                                        <input type="text" className="form-control" placeholder="Last name" name="lastname" onChange={handleAddress} />
                                     </div>
                                     <div className="col-md-6">
                                         <input type="text" className="form-control" placeholder="Email" name="email" onChange={handleAddress} />

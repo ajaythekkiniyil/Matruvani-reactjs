@@ -5,6 +5,7 @@ import BlogContents from './components/Blogs/BlogContents';
 import AllComponents from './components/AllComponents/AllComponents';
 import Cart from './components/Cart/Cart';
 import Error from './components/Error/Error'
+import OrderSummary from './components/OrderSummary/OrderSummary';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<AllComponents />} />
             <Route path="/blogs/:slug" element={<BlogContents />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/order-summary" element={<OrderSummary />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>

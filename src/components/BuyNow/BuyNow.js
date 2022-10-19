@@ -5,7 +5,7 @@ function BuyNow() {
     const [bookData, setBookData] = useState({
         bookTitle: 'March 2022',
         bookVolume: 'Vol. 31 No.8',
-        bookPrice: '50.00',
+        bookPrice: '1',
         bookLanguage: 'English',
     })
     useEffect(()=>{

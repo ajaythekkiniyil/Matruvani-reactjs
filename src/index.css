@@ -120,6 +120,10 @@ body {
 .blog-content-sec{
   background-color: #fff;
 }
+.form-control:disabled, .form-control[readonly] {
+  background-color: #fff;
+  opacity: 1;
+}
 @media screen and (min-width: 992px) {
   .card {
     display: grid;

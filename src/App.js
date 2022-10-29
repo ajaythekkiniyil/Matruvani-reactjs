@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<AllComponents />} />
-            <Route path="/blogs/:slug" element={<BlogContents />} />
+            <Route path=":slug" element={<BlogContents />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order-summary" element={<OrderSummary />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />

@@ -16,7 +16,6 @@ function Blogs() {
     useEffect(() => {
         // API call to backend and set blogs data to state
         axios.get(apiEndPoint).then((resp) => {
-            console.log(resp.data.data);
             setBlogs(resp.data.data)
         })
     }, [])
@@ -65,7 +64,7 @@ function Blogs() {
                                     const blogImageUrl = constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.formats.small.url ? constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.formats.small.url : ''
                                     return (
                                         <Fragment key={eachBlog.id}>
-                                            <Link to={`/blogs/${eachBlog.attributes.slug}`} className='blog-link'>
+                                            <Link to={`/${eachBlog.attributes.slug}`} state={eachBlog.attributes.slug} className='blog-link'>
                                                 <div className="item">
                                                     <div className="pr-thumb">
                                                         <img className='img-fluid' src={blogImageUrl} alt="blog" />

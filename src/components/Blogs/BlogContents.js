@@ -4,27 +4,31 @@ import { useParams } from 'react-router-dom'
 import constants from '../Constants'
 import axios from 'axios'
 
-// import ScrollProgressRead from 'react-scroll-progress-read';
-// import ScrollProgress from 'react-scrolling-progress';
 import ProgressBar from 'react-progressbar-on-scroll'
 
 function BlogContents() {
+
   const { slug } = useParams()
+
   const [blogImage, setBlogImage] = useState('')
   const [blogDetails, setBlogDetails] = useState({
     blogContent: '',
     publishedAt: '',
   })
 
-  // apiEndpoint for strapi get one blog details based on slug
-  const apiEndPoint = constants.apiEndPoint + `blogs?filters[slug]=${slug}&populate=blogImage`
   useEffect(() => {
-    axios.get(apiEndPoint).then((resp) => {
-      // blog banner image url
-      setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.formats.small.url);
-      setBlogDetails(resp.data.data[0].attributes);
-    })
-  }, [])
+
+    // apiEndpoint for strapi get one blog details based on slug
+    const apiEndPoint = constants.apiEndPoint + `blogs?filters[slug]=${slug}&populate=blogImage`
+
+        axios.get(apiEndPoint).then((resp) => {
+          // blog banner image url
+          setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.formats.small.url);
+          setBlogDetails(resp.data.data[0].attributes);
+        })
+
+
+  },[])
 
   return (
 
@@ -46,7 +50,7 @@ function BlogContents() {
                 color="#8c4bff"
                 gradient={true}
                 gradientColor="green"
-               />
+              />
               {blogDetails && blogDetails.blogContent}
             </p>
 

@@ -1,38 +1,57 @@
 import { useState, useEffect } from 'react'
-import  secureLocalStorage  from  "react-secure-storage";
+import secureLocalStorage from "react-secure-storage";
+import coverImage from '../../images/pr-gallery-image-01.jpg'
+import thumbnailImage from '../../images/pr-gallery-image-02.jpg'
+import thumbnailImage2 from '../../images/pr-gallery-image-03.jpg'
 
 function BuyNow() {
+    const [coverImg, setCoverImg] = useState(coverImage)
+
+    const [thumbnailImages, setBuyNowImage] = useState({
+        thumbnailOne: coverImg,
+        thumbnailTwo: thumbnailImage2,
+        thumbnailThree: thumbnailImage,
+        thumbnailFour: thumbnailImage2,
+    })
     const [bookData, setBookData] = useState({
         bookTitle: 'March 2022',
         bookVolume: 'Vol. 31 No.8',
         bookPrice: '1',
         bookLanguage: 'English',
     })
-    useEffect(()=>{
+    useEffect(() => {
         // fetch latest book details from backend and store to book data
 
         // book data securly store to localStorage
-        secureLocalStorage.setItem('bookData',bookData)
-    },[bookData])
+        secureLocalStorage.setItem('bookData', bookData)
+    }, [bookData])
 
     // function handlechage to change language
     function handleChange(e) {
         setBookData((prevS) => {
             return (
                 {
-                    ...prevS, 
+                    ...prevS,
                     bookLanguage: e.target.value
                 }
             )
         })
     }
-
+    function handleThumbnail(e) {
+        setCoverImg(e.target.src)
+    }
     return (
         <section className="pb-5 single_product">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-6 text-center">
-                        <img className="large-view" src={require('../../images/pr-gallery-image-01.jpg')} alt="largeView" />
+                        <img className="large-view" src={coverImg} alt="largeView" />
+                        <div className="img-select row p-2" style={{ cursor: 'pointer' }}>
+                            <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailOne} onClick={handleThumbnail} alt='thumbnail' />
+                            <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailTwo} onClick={handleThumbnail} alt='thumbnail' />
+                            <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailThree} onClick={handleThumbnail} alt='thumbnail' />
+                            <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailFour} onClick={handleThumbnail} alt='thumbnail' />
+                        </div>
                     </div>
                     <div className="col-lg-6">
                         <div className="product-content">
@@ -61,7 +80,7 @@ function BuyNow() {
                 </div>
             </div>
         </section>
-            
+
     )
 }
 export default BuyNow

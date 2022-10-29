@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import secureLocalStorage from "react-secure-storage";
+import axios from 'axios'
+import Constants from '../Constants';
+
 import coverImage from '../../images/pr-gallery-image-01.jpg'
 import thumbnailImage from '../../images/pr-gallery-image-02.jpg'
 import thumbnailImage2 from '../../images/pr-gallery-image-03.jpg'
 
 function BuyNow() {
     const [coverImg, setCoverImg] = useState(coverImage)
-
-    const [thumbnailImages, setBuyNowImage] = useState({
+    const [thumbnailImages, setthumbnailImages] = useState({
         thumbnailOne: coverImg,
         thumbnailTwo: thumbnailImage2,
         thumbnailThree: thumbnailImage,
@@ -19,10 +21,32 @@ function BuyNow() {
         bookPrice: '1',
         bookLanguage: 'English',
     })
-    useEffect(() => {
+    useEffect(()=>{
         // fetch latest book details from backend and store to book data
-
-        // book data securly store to localStorage
+        axios.get('http://localhost:1337/api/latest-books?populate=*').then(resp=>{
+            // storing boodData
+            const latestBook = (resp.data.data[0].attributes)
+            setBookData((prevS)=>(
+                {...latestBook}
+            ))
+            // storing images
+            const coverImage = Constants.imageUrl + resp.data.data[0].attributes.coverImage.data.attributes.url
+            setCoverImg(coverImage)
+            // storing thumbnail images
+            const thumbnailOne = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[0].attributes.url
+            const thumbnailTwo = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[1].attributes.url
+            const thumbnailThree = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[2].attributes.url
+            const thumbnailFour = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[3].attributes.url
+            setthumbnailImages({
+                thumbnailOne : thumbnailOne,
+                thumbnailTwo : thumbnailTwo,
+                thumbnailThree : thumbnailThree,
+                thumbnailFour : thumbnailFour,
+            })
+        })
+    },[])
+    useEffect(() => {
+        // book data securly store to localStorage - onloading time and if any data(user select language)
         secureLocalStorage.setItem('bookData', bookData)
     }, [bookData])
 

@@ -9,7 +9,7 @@ function SpecialEdition() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-12 p-0">
-                            <a target="blank" href="/layamritam">
+                            <a href="#">
                                 <img src={layamritamImage} alt='layamritam' />
                             </a>
                         </div>

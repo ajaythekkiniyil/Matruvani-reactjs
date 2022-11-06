@@ -35,7 +35,6 @@ function Cart() {
         secureLocalStorage.setItem('purchaseData', purchaseData)
         window.location.href = '/order-summary'
     }
-
     return (
         <>
             <section className='cart'>

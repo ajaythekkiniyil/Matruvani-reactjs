@@ -13,12 +13,19 @@ function Blogs() {
     // apiendpoint for strapi
     const apiEndPoint = constants.apiEndPoint + 'blogs?populate=blogImage'
     const [blogs, setBlogs] = useState([])
+
+    // API call to backend and set blogs data to state
+    async function fetchData() {
+        const response = await axios.get(apiEndPoint)
+        if (response) {
+            setBlogs(response.data.data)
+        }
+    }
+
     useEffect(() => {
-        // API call to backend and set blogs data to state
-        axios.get(apiEndPoint).then((resp) => {
-            setBlogs(resp.data.data)
-        })
+        fetchData();
     }, [])
+
     const options = {
         responsiveClass: true,
         margin: 20,

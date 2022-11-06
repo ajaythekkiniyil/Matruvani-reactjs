@@ -16,19 +16,20 @@ function BlogContents() {
     publishedAt: '',
   })
 
-  useEffect(() => {
-
-    // apiEndpoint for strapi get one blog details based on slug
+  async function fetchData() {
     const apiEndPoint = constants.apiEndPoint + `blogs?filters[slug]=${slug}&populate=blogImage`
+    // apiEndpoint for strapi get one blog details based on slug
+    const resp = await axios.get(apiEndPoint)
+    if (resp) {
+      // blog banner image url
+      setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.formats.small.url);
+      setBlogDetails(resp.data.data[0].attributes);
+    }
+  }
 
-        axios.get(apiEndPoint).then((resp) => {
-          // blog banner image url
-          setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.formats.small.url);
-          setBlogDetails(resp.data.data[0].attributes);
-        })
-
-
-  },[])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
 

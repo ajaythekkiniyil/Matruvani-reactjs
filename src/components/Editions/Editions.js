@@ -4,13 +4,11 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import axios from 'axios'
 import Constants from '../Constants'
-import { useNavigate } from "react-router-dom";
 import secureLocalStorage from 'react-secure-storage'
 import Loading from '../Loading/Loading'
 
 function Editions() {
     const [oldEditions, setOldEditions] = useState()
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(true)
     const options = {
         responsiveClass: true,

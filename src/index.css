@@ -117,16 +117,21 @@ body {
   font-size: 20px;
   color: #fff;
 }
-.blog-content-sec{
+
+.blog-content-sec {
   background-color: #fff;
 }
-.blog-content-sec .container{
+
+.blog-content-sec .container {
   margin-top: 40px;
 }
-.form-control:disabled, .form-control[readonly] {
+
+.form-control:disabled,
+.form-control[readonly] {
   background-color: #fff;
   opacity: 1;
 }
+
 @media screen and (min-width: 992px) {
   .card {
     display: grid;
@@ -306,7 +311,8 @@ span {
   font-family: 'Anek Malayalam';
   line-height: 26px;
 }
-.pr-thumb:hover{
+
+.pr-thumb:hover {
   background-color: #f8f8f8;
 }
 
@@ -334,33 +340,41 @@ span {
   /* text-align: center; */
   font-weight: 600;
 }
+
 .paras {
   font-size: 20px;
   color: #464646;
 }
-.related-title{
+
+.related-title {
   font-size: 40px;
   font-weight: 700;
 }
-.related-post-img{
+
+.related-post-img {
   width: 100%;
   border-radius: 5px;
   margin: 0 0 30px 0;
 }
-.related-sub-title{
+
+.related-sub-title {
   font-size: 22px;
 }
-.blog-link{
+
+.blog-link {
   text-decoration: none;
 }
-.author-and-date{
+
+.author-and-date {
   line-height: 30px;
 }
-.author-and-date img{
+
+.author-and-date img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
+
 .product-content h3 {
   font-family: 'Heebo';
   font-size: 39px;
@@ -368,6 +382,7 @@ span {
   color: #50538B;
   margin-top: 200px;
 }
+
 .pr-vl {
   font-size: 20px;
   font-family: 'Heebo';
@@ -375,6 +390,7 @@ span {
   color: #3F3D3D;
   margin: 0;
 }
+
 .pr-desc {
   font-family: 'Heebo';
   font-size: 20px;
@@ -382,6 +398,7 @@ span {
   margin: 0;
   padding-bottom: 10px;
 }
+
 .pr-price {
   font-family: 'Heebo';
   font-size: 25px;
@@ -389,6 +406,7 @@ span {
   margin: 0;
   padding-bottom: 10px;
 }
+
 .pr-lang {
   font-family: 'Heebo';
   font-size: 20px;
@@ -396,6 +414,7 @@ span {
   margin: 0;
   padding-bottom: 25px;
 }
+
 .product-content a {
   background: #50538B;
   color: #fff;
@@ -404,6 +423,7 @@ span {
   margin-right: 15px;
   text-decoration: none;
 }
+
 .pr-lang select {
   font-size: 15px;
   border: 1px solid #50538b;
@@ -411,24 +431,30 @@ span {
   font-family: 'Heebo';
   outline: none;
 }
-.large-view{
+
+.large-view {
   width: 100%;
 }
-.pr-thumb img{
+
+.pr-thumb img {
   height: 200px;
 }
-.cart{
+
+.cart {
   padding: 50px 0;
 }
-.order-item{
+
+.order-item {
   width: 130px;
 }
-.order-blk{
+
+.order-blk {
   background-color: #fff;
   padding: 20px;
   line-height: 12px;
   margin: 2px;
 }
+
 .plusMinus {
   padding: 0px;
   margin: 0 10px 0 0;
@@ -441,17 +467,77 @@ span {
   font-size: 20px;
   color: #000;
 }
-.form-control{
+
+.form-control {
   margin: 5px 0;
 }
-.order-details{
+
+.order-details {
   background: white;
   padding: 20px;
 }
-.order-now-btn{
+
+.order-now-btn {
   background-color: #42426E;
   color: #fff;
 }
+
+/*  */
+.payment {
+  border: 1px solid #f2f2f2;
+  height: 280px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.payment_header {
+  background: rgba(255, 102, 0, 1);
+  padding: 20px;
+  border-radius: 20px 20px 0px 0px;
+
+}
+
+.check {
+  margin: 0px auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #fff;
+  text-align: center;
+}
+
+.check i {
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 55px;
+  font-weight: 600;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 25px;
+  padding-top: 25px;
+}
+
+.content a {
+  width: 200px;
+  height: 35px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  border-radius: 30px;
+  padding: 5px 10px;
+  /* background: rgb(168, 168, 168); */
+  transition: all ease-in-out 0.3s;
+}
+
+.content a:hover {
+  text-decoration: none;
+  background: #000;
+}
+
 @media (max-width: 480px) {
   .sp-header-text {
     width: 85% !important;

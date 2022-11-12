@@ -5,12 +5,14 @@ import constants from '../Constants'
 import axios from 'axios'
 
 import ProgressBar from 'react-progressbar-on-scroll'
+import Loading from '../Loading/Loading'
 
 function BlogContents() {
 
   const { slug } = useParams()
 
   const [blogImage, setBlogImage] = useState('')
+  const [loading, setloading] = useState(true)
   const [blogDetails, setBlogDetails] = useState({
     blogContent: '',
     publishedAt: '',
@@ -24,6 +26,7 @@ function BlogContents() {
       // blog banner image url
       setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.formats.small.url);
       setBlogDetails(resp.data.data[0].attributes);
+      setloading(false)
     }
   }
 
@@ -32,53 +35,42 @@ function BlogContents() {
   }, [])
 
   return (
-
     <section className='p-3 blog-content-sec'>
+      {
+        loading ? <Loading /> :
+          <>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
+                  <h3 className="blog-title">{blogDetails.blogName}</h3>
+                  <div className="author-and-date">
+                    <strong className='author-name'>{blogDetails.authorName}</strong>
+                    <p className='date'>{blogDetails.publishedAt.slice(0, 10)}</p>
+                  </div>
+                </div>
 
-      <div className="container">
+                <div className="col-md-6">
+                  <img className='featured-img' src={blogImage} alt="blog-post" />
+                </div>
 
-        <div className="row" style={{ justifyContent: 'center' }}>
-          <div className="col-md-8 blog-content">
-
-            <h3 className="blog-title">{blogDetails.blogName}</h3>
-
-            <img className='featured-img' src={blogImage} alt="blog-post" />
-            <p className="paras" style={{ whiteSpace: 'pre-line' }}>
-              <ProgressBar color="#fff"
-                height={5}
-                direction="right"
-                position="top"
-                color="#8c4bff"
-                gradient={true}
-                gradientColor="green"
-              />
-              {blogDetails && blogDetails.blogContent}
-            </p>
-
-            <div className="author-and-date">
-              <strong className='author-name'>{blogDetails.authorName}</strong>
-              <p className='date'>{blogDetails.publishedAt.slice(0, 10)}</p>
+                <div className="col-md-10 blog-content">
+                  <p className="paras" style={{ whiteSpace: 'pre-line' }}>
+                    <ProgressBar color="#fff"
+                      height={5}
+                      direction="right"
+                      position="top"
+                      color="#D6E4E5"
+                      gradient={true}
+                      gradientColor="#497174"
+                    />
+                    {blogDetails && blogDetails.blogContent}
+                  </p>
+                </div>
+              </div>
             </div>
+          </>
+      }
 
-          </div>
-
-          {/* Related post */}
-          <div className="col-md-12">
-            <h3 className="related-title">Related</h3>
-          </div>
-
-          <div className="col-md-3">
-            <img className="related-post-img" src="https://preview.colorlib.com/theme/magdesign/images/ximg_3.jpg.pagespeed.ic.TsSrvxpHvJ.webp" alt="related-post" />
-          </div>
-          <div className="col-md-9">
-            <p className='date pt-3'>July 2, 2020</p>
-            <h5 className='related-sub-title'>Your most unhappy customers are your greatest source of learning.</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-          {/* Related post */}
-
-        </div>
-      </div>
     </section>
   )
 }

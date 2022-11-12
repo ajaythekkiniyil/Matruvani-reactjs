@@ -6,11 +6,12 @@ import axios from 'axios'
 import Constants from '../Constants'
 import { useNavigate } from "react-router-dom";
 import secureLocalStorage from 'react-secure-storage'
+import Loading from '../Loading/Loading'
 
 function Editions() {
     const [oldEditions, setOldEditions] = useState()
     const navigate = useNavigate();
-    // const [coverImage, setCoverImage] = useState()
+    const [loading, setLoading] = useState(true)
     const options = {
         responsiveClass: true,
         margin: 20,
@@ -44,14 +45,14 @@ function Editions() {
         const resp = await axios.get(apiEndPoint)
         if (resp) {
             setOldEditions(resp.data.data)
-            // setCoverImage(resp.data.data)
+            setLoading(false)
         }
     }
 
-    function handleClick(eachItem){
+    function handleClick(eachItem) {
         const oldEditions = {
             eachItem,
-            status : true
+            status: true
         }
         secureLocalStorage.setItem('oldEditions', oldEditions)
         // navigate("cart");
@@ -59,26 +60,31 @@ function Editions() {
 
     return (
         <section className='product_slider'>
-            <div className="container">
-                <div className="row">
-                    <OwlCarousel {...options}>
-                        { oldEditions &&
-                            oldEditions.map((eachItem,index) => {
-                                // console.log(eachItem.attributes)
-                                const url = Constants.imageUrl + eachItem.attributes.coverImage.data.attributes.url
-                                return (
-                                    <div key={index}>
-                                        <div className="item">
-                                            <img src={url} alt="issues"  onClick={()=>handleClick(eachItem)}/>
-                                            <p>{eachItem.attributes.bookTitle}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </OwlCarousel>
-                </div>
-            </div>
+            {
+                loading ? <Loading /> :
+                    <>
+                        <div className="container">
+                            <div className="row">
+                                <OwlCarousel {...options}>
+                                    {oldEditions &&
+                                        oldEditions.map((eachItem, index) => {
+                                            const url = Constants.imageUrl + eachItem.attributes.coverImage.data.attributes.url
+                                            return (
+                                                <div key={index}>
+                                                    <div className="item">
+                                                        <img src={url} alt="issues" onClick={() => handleClick(eachItem)} />
+                                                        <p>{eachItem.attributes.bookTitle}</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </OwlCarousel>
+                            </div>
+                        </div>
+                    </>
+            }
+
         </section>
     )
 }

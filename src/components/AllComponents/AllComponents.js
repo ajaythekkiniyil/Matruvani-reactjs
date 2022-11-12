@@ -9,9 +9,6 @@ import Blogs from '../Blogs/Blogs';
 import secureLocalStorage from 'react-secure-storage';
 
 function AllComponents() {
-    window.addEventListener('load', (event) => {
-        secureLocalStorage.clear()
-      });
     return (
         <>
             <Header />

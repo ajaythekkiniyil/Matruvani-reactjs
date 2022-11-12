@@ -120,6 +120,9 @@ body {
 .blog-content-sec{
   background-color: #fff;
 }
+.blog-content-sec .container{
+  margin-top: 40px;
+}
 .form-control:disabled, .form-control[readonly] {
   background-color: #fff;
   opacity: 1;
@@ -323,16 +326,16 @@ span {
 .featured-img {
   width: 100%;
   border-radius: 5px;
-  margin: 30px 0;
+  /* margin: 30px 0; */
 }
 
 .blog-title {
   font-size: 37px;
-  text-align: center;
+  /* text-align: center; */
   font-weight: 600;
 }
 .paras {
-  font-size: 22px;
+  font-size: 20px;
   color: #464646;
 }
 .related-title{

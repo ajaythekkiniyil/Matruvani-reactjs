@@ -9,11 +9,15 @@ function OrderSummary() {
     const [txnid, setTxnid] = useState()
     const [hash, setHash] = useState()
     useEffect(() => {
-        axios.post(Constants.apiEndPointNodejs, purchaseData).then((resp) => {
-            setHash(resp.data.hash)
-            setKey(resp.data.key)
-            setTxnid(resp.data.txnid)
-        })
+        async function fetchData() {
+            await axios.post(Constants.apiEndPointNodejs, purchaseData).then((resp) => {
+                console.log(resp)
+                setHash(resp.data.hash)
+                setKey(resp.data.key)
+                setTxnid(resp.data.txnid)
+            })
+        }
+        fetchData();
     }, [])
     return (
         <>
@@ -25,7 +29,7 @@ function OrderSummary() {
                             <form className='order-details'>
                                 <small className='text-danger'>You can only view details can't edit</small><br></br><br></br>
                                 <div className="row">
-                                    
+
                                     <div className="col-md-6">
                                         <small>First Name</small>
                                         <input type="text" className="form-control mb-3" readOnly value={purchaseData.address.firstname} name="firstname" />

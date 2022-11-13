@@ -73,7 +73,7 @@ function Blogs() {
                                     <OwlCarousel {...options}>
                                         {
                                             blogs.map((eachBlog) => {
-                                                const blogImageUrl = constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.formats.small.url ? constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.formats.small.url : ''
+                                                const blogImageUrl = constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.url ? constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.url : ''
                                                 return (
                                                     <Fragment key={eachBlog.id}>
                                                         <Link to={`/${eachBlog.attributes.slug}`} state={eachBlog.attributes.slug} className='blog-link'>

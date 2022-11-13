@@ -1,8 +1,8 @@
 const Constants = {
     apiEndPoint : 'https://sea-lion-app-fg24b.ondigitalocean.app/api/', //strapi url
-    apiEndPointNodejs : 'http://128.199.57.67', //nodejs url
+    apiEndPointNodejs : 'https://testsites.online', //nodejs url
     imageUrl : 'https://sea-lion-app-fg24b.ondigitalocean.app', //strapi url
-    paymentStatusUrl : 'http://128.199.57.67/payment-status', //nodejs url
+    paymentStatusUrl : 'https://testsites.online/payment-status', //nodejs url
 }
 
 export default Constants

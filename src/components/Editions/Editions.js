@@ -66,7 +66,7 @@ function Editions() {
                                 <OwlCarousel {...options}>
                                     {oldEditions &&
                                         oldEditions.map((eachItem, index) => {
-                                            const url = Constants.imageUrl + eachItem.attributes.coverImage.data.attributes.url
+                                            const url = eachItem.attributes.coverImage.data.attributes.url
                                             return (
                                                 <div key={index}>
                                                     <div className="item">

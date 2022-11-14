@@ -24,8 +24,8 @@ body {
   position: relative;
   color: #fff;
   height: 900px;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 31%, 0 56%);
-  clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
+  /* -webkit-clip-path: polygon(0 0, 100% 0%, 100% 31%, 0 56%); */
+  /* clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%); */
   /* change the calc height to a percentage height to get alternate responsive behavior*/
 }
 
@@ -160,8 +160,8 @@ body {
 .product_slider {
   background: url(./images/pattern-img-01.jpg);
   padding: 100px 0;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
-  clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
+  /* -webkit-clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%);
+  clip-path: polygon(0 0, 100% 0%, 100% 80%, 0 100%); */
   min-height: 700px;
   height: 700px;
 }

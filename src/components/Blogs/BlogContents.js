@@ -23,10 +23,10 @@ function BlogContents() {
     // apiEndpoint for strapi get one blog details based on slug
     const resp = await axios.get(apiEndPoint)
     if (resp) {
-      console.log();
+      console.log()
 
       // blog banner image url
-      setBlogImage(constants.imageUrl + resp.data.data[0].attributes.blogImage.data[0].attributes.url);
+      setBlogImage(resp.data.data[0].attributes.blogImage.data[0].attributes.url);
       setBlogDetails(resp.data.data[0].attributes);
       setloading(false)
     }

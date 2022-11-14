@@ -73,7 +73,7 @@ function Blogs() {
                                     <OwlCarousel {...options}>
                                         {
                                             blogs.map((eachBlog) => {
-                                                const blogImageUrl = constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.url ? constants.imageUrl + eachBlog.attributes.blogImage.data[0].attributes.url : ''
+                                                const blogImageUrl = eachBlog.attributes.blogImage.data[0].attributes.url ? eachBlog.attributes.blogImage.data[0].attributes.url : ''
                                                 return (
                                                     <Fragment key={eachBlog.id}>
                                                         <Link to={`/${eachBlog.attributes.slug}`} state={eachBlog.attributes.slug} className='blog-link'>
@@ -81,7 +81,6 @@ function Blogs() {
                                                                 <div className="pr-thumb">
                                                                     <img className='img-fluid' src={blogImageUrl} alt="blog" />
                                                                     <h4>{eachBlog.attributes.blogName}</h4>
-                                                                    {/* long text making to short */}
                                                                     <p>{eachBlog.attributes.blogContent.slice(0, 100)}...</p>
                                                                 </div>
                                                             </div>

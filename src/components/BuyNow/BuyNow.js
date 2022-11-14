@@ -33,14 +33,15 @@ function BuyNow() {
         setBookData((prevS) => (
             { ...latestBook }
         ))
+        
         // storing images
-        const coverImage = Constants.imageUrl + resp.data.data[0].attributes.coverImage.data.attributes.url
+        const coverImage = resp.data.data[0].attributes.coverImage.data.attributes.url
         setCoverImg(coverImage)
         // storing thumbnail images
-        const thumbnailOne = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[0].attributes.url
-        const thumbnailTwo = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[1].attributes.url
-        const thumbnailThree = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[2].attributes.url
-        const thumbnailFour = Constants.imageUrl + resp.data.data[0].attributes.thumbnailImages.data[3].attributes.url
+        const thumbnailOne = resp.data.data[0].attributes.thumbnailImages.data[0].attributes.url
+        const thumbnailTwo = resp.data.data[0].attributes.thumbnailImages.data[1].attributes.url
+        const thumbnailThree = resp.data.data[0].attributes.thumbnailImages.data[2].attributes.url
+        const thumbnailFour = resp.data.data[0].attributes.thumbnailImages.data[3].attributes.url
         setthumbnailImages({
             thumbnailOne: thumbnailOne,
             thumbnailTwo: thumbnailTwo,
@@ -78,7 +79,7 @@ function BuyNow() {
                     <>
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-6 text-center">
+                                <div className="col-lg-5 text-center">
                                     <img className="large-view" src={coverImg} alt="largeView" />
                                     <div className="img-select row p-2" style={{ cursor: 'pointer' }}>
                                         <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailOne} onClick={handleThumbnail} alt='thumbnail' />
@@ -87,7 +88,7 @@ function BuyNow() {
                                         <img className='col-3 m-0 p-1' src={thumbnailImages.thumbnailFour} onClick={handleThumbnail} alt='thumbnail' />
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-7">
                                     <div className="product-content">
                                         <h3>{bookData.bookTitle}</h3>
                                         <p className="pr-vl">{bookData.bookVolume}</p>
@@ -108,7 +109,8 @@ function BuyNow() {
                                                 </select>
                                             </div>
                                         </div>
-                                        <a href="/cart">Buy Now</a>
+                                        {/* <a href="/cart">Buy Now</a> */}
+                                        {/* <a href="#">Buy Now</a> */}
                                     </div>
                                 </div>
                             </div>

@@ -577,6 +577,20 @@ span {
   }
 
   .banner-section .banner-object img {
-    width: auto;
+    width: -webkit-fill-available;
   }
+
+  .large-view {
+    width: 100%;
+    margin: 250px 0 0;
+  }
+
+  .product-content h3 {
+    margin-top: 10px;
+  }
+
+  .product_info p {
+    font-size: 18px;
+  }
+
 }

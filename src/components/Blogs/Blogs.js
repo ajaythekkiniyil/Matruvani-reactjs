@@ -81,7 +81,7 @@ function Blogs() {
                                                                 <div className="pr-thumb">
                                                                     <img className='img-fluid' src={blogImageUrl} alt="blog" />
                                                                     <h4>{eachBlog.attributes.blogName}</h4>
-                                                                    <p>{eachBlog.attributes.blogContent.slice(0, 100)}...</p>
+                                                                    <p>{eachBlog.attributes.blogContent.slice(0, 150)}...</p>
                                                                 </div>
                                                             </div>
                                                         </Link>

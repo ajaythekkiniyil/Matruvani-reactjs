@@ -43,7 +43,7 @@ function BlogContents() {
           <>
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-7">
                   <h3 className="blog-title">{blogDetails.blogName}</h3>
                   <div className="author-and-date">
                     <strong className='author-name'>{blogDetails.authorName}</strong>
@@ -51,11 +51,11 @@ function BlogContents() {
                   </div>
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-5">
                   <img className='featured-img' src={blogImage} alt="blog-post" />
                 </div>
 
-                <div className="col-md-10 blog-content">
+                <div className="col-md-12 blog-content">
                   <p className="paras" style={{ whiteSpace: 'pre-line' }}>
                     <ProgressBar color="#fff"
                       height={5}
